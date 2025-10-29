@@ -1,20 +1,15 @@
 
-
 public class Square implements Shape {
-    private int side;
+    private double side;
 
-    public Square(int side) {
+    public Square(double side) {
         this.side = side;
     }
 
-    public int getArea() {
+    @Override
+    public double getArea() {
         return side * side;
     }
 
-    @Override
-    public double calculateArea() {
-        return getArea();
-    }
-
-    public int getSide() { return side; }
+    public double getSide() { return side; }
 }

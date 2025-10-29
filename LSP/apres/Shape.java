@@ -1,4 +1,3 @@
-
-public  interface Shape {
-    int getArea();
+public interface Shape {
+    double getArea();
 }

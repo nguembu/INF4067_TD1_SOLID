@@ -3,20 +3,26 @@ public class Rectangle {
     protected int width;
     protected int height;
 
-    // Constructeur par défaut nécessaire
     public Rectangle() {
         this.width = 0;
         this.height = 0;
     }
 
-    // Constructeur avec paramètres
     public Rectangle(int width, int height) {
         this.width = width;
         this.height = height;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public void setHeight(int height) {
@@ -27,7 +33,8 @@ public class Rectangle {
         return width * height;
     }
 
-    // Getters pour debug
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+    @Override
+    public String toString() {
+        return "Rectangle(w=" + width + ", h=" + height + ")";
+    }
 }

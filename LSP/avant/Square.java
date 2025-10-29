@@ -1,23 +1,37 @@
 
-
 public class Square extends Rectangle {
-    
-    
 
-    // Constructeur avec paramètre
+   
     public Square(int side) {
         super(side, side);
     }
 
+    
+    public Square() {
+     
+        super(1, 1);
+    }
+
+    
     @Override
     public void setWidth(int width) {
-        super.setWidth(width);
-        super.setHeight(width); // Violation LSP: change aussi la hauteur
+        this.width = width;
+        this.height = width;
     }
 
     @Override
     public void setHeight(int height) {
-        super.setWidth(height); // Violation LSP: change aussi la largeur
-        super.setHeight(height);
+        this.width = height;
+        this.height = height;
+    }
+
+    public int getSide() {
+        
+        return width;
+    }
+
+    @Override
+    public String toString() {
+        return "Square(side=" + width + ")";
     }
 }

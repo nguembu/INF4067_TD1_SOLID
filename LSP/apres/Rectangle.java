@@ -1,24 +1,17 @@
-
-
 public class Rectangle implements Shape {
-    private int width;
-    private int height;
+    private double width;
+    private double height;
 
-    public Rectangle(int width, int height) {
+    public Rectangle(double width, double height) {
         this.width = width;
         this.height = height;
     }
 
-    public int getArea() {
+    @Override
+    public double getArea() {
         return width * height;
     }
 
-    @Override
-    public double calculateArea() {
-        return getArea();
-    }
-
-    // Getters pour d'éventuelles autres utilisations
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+    public double getWidth() { return width; }
+    public double getHeight() { return height; }
 }

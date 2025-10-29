@@ -1,23 +1,25 @@
-
+// MainLsp.java
 public class MainLsp {
     public static void main(String[] args) {
-        // Test avec Rectangle
-        Rectangle rectangle = new Rectangle();
-        rectangle.setWidth(5);
-        rectangle.setHeight(4);
-        System.out.println("Aire du Rectangle = " + rectangle.getArea()); // Attend 20
+        // Exemple montrant la mauvaise substitution (LSP est violé conceptuellement)
+        Rectangle r = new Rectangle(4, 5);
+        System.out.println("Rectangle r: " + r + " area=" + r.getArea());
 
-        // Test avec Square substitué à Rectangle
-        Rectangle squareAsRectangle = new Square();
-        squareAsRectangle.setWidth(5);
-        squareAsRectangle.setHeight(4); // Problème: obtient 16 au lieu de 20
-        System.out.println("Aire du Carre (comme Rectangle) = " + squareAsRectangle.getArea());
-        
-        // Le comportement n'est pas coherent: violation du LSP
-        System.out.println("→ Violation LSP: 20 attendu, mais " + squareAsRectangle.getArea() + " obtenu");
-        
-        // Debug: afficher les dimensions
-        System.out.println("Dimensions Rectangle: " + rectangle.getWidth() + "x" + rectangle.getHeight());
-        System.out.println("Dimensions Carre: " + squareAsRectangle.getWidth() + "x" + squareAsRectangle.getHeight());
+        // On instancie un Square sans argument (corrigé grâce au constructeur par défaut)
+        Rectangle squareAsRectangle = new Square(); // compilera maintenant
+        System.out.println("squareAsRectangle initial: " + squareAsRectangle + " area=" + squareAsRectangle.getArea());
+
+        // On modifie la width en pensant travailler sur un rectangle
+        squareAsRectangle.setWidth(10);
+        // Si l'instance est en réalité un Square, setWidth(10) affectera aussi la height,
+        // donc le comportement attendu pour un Rectangle normal est brisé.
+        System.out.println("Après setWidth(10): " + squareAsRectangle + " area=" + squareAsRectangle.getArea());
+
+        // Exemples supplémentaires
+        Rectangle r2 = new Square(3); // polymorphisme possible mais problématique
+        System.out.println("r2 (new Square(3)): " + r2 + " area=" + r2.getArea());
+
+        r2.setHeight(5); // provoque changement aussi de width si c'est un Square
+        System.out.println("Après r2.setHeight(5): " + r2 + " area=" + r2.getArea());
     }
 }
