@@ -1,13 +1,11 @@
 package avant;
 
+
 public class OrderProcessor {
-    private MySQLDatabase database; // Dépendance concrète
+    private MySQLDatabase database = new MySQLDatabase();
 
-    public OrderProcessor() {
-        this.database = new MySQLDatabase(); // Création directe
-    }
-
-    public void processOrder(String order) {
-        database.save(order);
+    public void process(String orderData) {
+        System.out.println("Processing order: " + orderData);
+        database.saveOrder(orderData); // dépendance forte
     }
 }

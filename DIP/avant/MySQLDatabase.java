@@ -1,7 +1,8 @@
 package avant;
 
+
 public class MySQLDatabase {
-    public void save(String data) {
-        System.out.println("Saving to MySQL: " + data);
+    public void saveOrder(String orderData) {
+        System.out.println("💾 Order saved to MySQL database: " + orderData);
     }
 }
